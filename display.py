@@ -16,7 +16,10 @@ def oneDimensionalGraph(label, subset, angularCoefficient, offset = 0):
     if angularCoefficient == None: plt.axvline(x=x_points[0], color=colour, linestyle='-', label=f'One dimensional model x = {x_points[0]}')
     else: 
         yline = [angularCoefficient*x + offset for x in xline]
-        plt.plot(xline, yline, color=colour, label=f'One dimensional model y = {round(angularCoefficient, 3)} x')
+        if offset != 0:
+            plt.plot(xline, yline, color=colour, label=f'One dimensional model y = {round(angularCoefficient, 3)} x + {round(offset, 3)}')
+        else:
+            plt.plot(xline, yline, color=colour, label=f'One dimensional model y = {round(angularCoefficient, 3)} x')
 
     plt.title('Linear regression of a one dimensional model')
     plt.xlabel(label[0])
